@@ -1,0 +1,52 @@
+<h2>Exemplo de usuários</h2>
+<div class="form-group col-md-6">
+    <label>Nome</label>
+    <input type="text" class="form-control" [(ngModel)]="usuarioObject.nome"   />
+</div>
+<div class="form-group col-md-6">
+    <label>Idade</label>
+    <input type="number" class="form-control" [(ngModel)]="usuarioObject.idade"   />
+</div>
+<div *ngIf="!edit" class="form-group col-md-3">
+    <button class="btn btn-primary" (click)="salvarUsuario(usuarioObject)">Salvar</button>
+</div>
+<div *ngIf="edit" class="form-group col-md-3">
+    <button class="btn btn-primary" (click)="editarUsuario(usuarioObject, true)">Editar</button>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Nome
+        </th>
+        <th>
+            Idade
+        </th>
+        <th>
+
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+    <tr *ngFor="let usuario of usuarios; let i = index">
+        <td>
+            {{usuario._id}}
+        </td>
+        <td>
+            {{usuario.nome}}
+        </td>
+        <td>
+            {{usuario.idade}}
+        </td>
+        <td>
+            <button class="btn btn-primary" (click)="editarUsuario(usuario)">Editar</button>
+        </td>
+        <td>
+            <button class="btn btn-danger" (click)="deletarUsuario(usuario._id, i)">Deletar</button>
+        </td>
+    </tr>
+</table>
